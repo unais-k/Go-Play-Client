@@ -1,0 +1,35 @@
+.bannerPage {
+    margin-top: 0px;
+    position: relative;
+    height: 80%;
+}
+.img-banner {
+    height: fit-content;
+    margin-left: 19%;
+    width: 60%;
+}
+.input-sear {
+    margin: 0;
+    padding: 15px 15px;
+    font-size: 16px;
+    max-width: 584px;
+    color: #fff;
+    border: none;
+    background: #336633;
+    border-radius: 0;
+}
+.search-in {
+    width: 80%;
+    margin: 0 auto;
+    max-width: 584px;
+}
+.search-ic {
+    margin: 0;
+    padding: 14px 25px;
+    font-size: 0px;
+    width: 77px;
+    color: #fff;
+    border: none;
+    background: #ff9900 0px -212px;
+    border-radius: 0;
+}

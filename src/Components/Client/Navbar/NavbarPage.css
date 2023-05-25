@@ -1,0 +1,45 @@
+.logo-container {
+    width: 96%;
+    max-width: 1024px;
+    height: inherit;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+}
+.img-logo {
+    height: 40px;
+    width: 80px;
+}
+.logo-left {
+    float: left !important;
+}
+.header-right {
+    margin-top: 10px;
+    position: relative;
+}
+.header-right a {
+    font-size: 13px;
+    margin-left: 15px;
+    margin-right: 15px;
+    font-weight: 600;
+}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,600;0,700;0,900;1,300&family=Nerko+One&family=Prosto+One&family=Raleway:wght@100;300&family=Rubik:wght@400;500;600;700;800;900&family=Source+Code+Pro:wght@400;700&family=Ubuntu&family=Underdog&family=Zen+Dots&display=swap");
+
+.go-play-logo {
+    font-family: "Underdog", cursive;
+    font-size: 400;
+    margin-top: 10px;
+}
+.pull-right {
+    float: right;
+}
+.log-btn {
+    letter-spacing: 1px;
+    padding: 9px 39px;
+    outline: none;
+    border-radius: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    color: #fff;
+}
