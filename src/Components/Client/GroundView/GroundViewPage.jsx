@@ -97,9 +97,11 @@ function GroundViewPage() {
     const bookedFetchOnDate = async (date) => {
         const response = await OnDateBookedReqApi({ id: selectedEvent[0]._id, date: date });
         setBookedData(response.data.result);
+        console.log(response.data.time);
 
         let time2 = time.map((val) => {
             if (response.data.time[0]) {
+                console.log("enter ground");
                 for (let i = 0; i < response.data.time.length; i++) {
                     if (val.booked) {
                         val["booked"] = false;
@@ -120,12 +122,11 @@ function GroundViewPage() {
     };
 
     const handleDateChange = async (date) => {
-        console.log(date, "date");
         setDate(date);
         await bookedFetchOnDate(date);
     };
 
-    const bookNow3 = async (date) => {
+    const bookNow3 = async () => {
         setShowDiv3(true);
         setShowDiv2(true);
         setTime(
@@ -165,7 +166,6 @@ function GroundViewPage() {
     maxDate.setDate(maxDate.getDate() + 5);
 
     const handleBooking = async (id) => {
-        console.log(id);
         const compare = await selectSlot.find((res) => JSON.stringify(res) === JSON.stringify(id));
         if (!compare) {
             setTime(

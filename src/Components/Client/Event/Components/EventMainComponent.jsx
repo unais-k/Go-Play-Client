@@ -105,7 +105,7 @@ function EventMainComponent({ state }) {
     };
 
     // selecting date
-    const bookNow3 = async (date) => {
+    const bookNow3 = async () => {
         setShowDiv3(true);
         setShowDiv2(true);
         setTime(
@@ -130,10 +130,11 @@ function EventMainComponent({ state }) {
     const bookedFetchOnDate = async (date) => {
         const response = await OnDateBookedReqApi({ id: selectedEvent[0]._id, date: date });
         setBookedData(response.data.result);
-        console.log(response.data);
+        console.log(response.data.time);
 
         let time2 = time.map((val) => {
-            if (response.data.time) {
+            if (response.data.time[0]) {
+                console.log("enter event");
                 for (let i = 0; i < response.data.time.length; i++) {
                     if (val.booked) {
                         val["booked"] = false;
@@ -152,8 +153,6 @@ function EventMainComponent({ state }) {
 
         setBookedTime(response.data.time);
     };
-
-    console.log(time, "tim");
 
     const handleDateChange = async (date) => {
         setDate(date);
@@ -279,7 +278,7 @@ function EventMainComponent({ state }) {
             <section className="relative z-10 p-10 overflow-hidden bg-white lg:py-[40px]">
                 <div className="container mx-auto">
                     <div className="flex justify-center gap-10 mb-5">
-                        {cardTitle.map((res) => {
+                        {cardTitle?.map((res) => {
                             return (
                                 <div
                                     key={res.id}

@@ -123,8 +123,12 @@ function HomePage() {
                     <p>Explore grounds & venues in and around popular areas of your city</p>
 
                     <ul className="grid grid-cols-3 mt-10">
-                        {place?.map((res) => {
-                            return <li className="font-mono hover:text-amber-500">{res.place}</li>;
+                        {place?.map((res, index) => {
+                            return (
+                                <li key={index} className="font-mono hover:text-amber-500">
+                                    {res.place}
+                                </li>
+                            );
                         })}
                     </ul>
                 </div>

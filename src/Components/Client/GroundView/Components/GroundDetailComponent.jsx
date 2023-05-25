@@ -15,7 +15,6 @@ function GroundDetailComponent({ reviewDiv, rating, state, handleBookNow }) {
             },
         });
     };
-    console.log(state, "line 17");
     useEffect(() => {
         if (state.name) {
             setLoader(false);
