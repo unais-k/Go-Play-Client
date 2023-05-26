@@ -33,7 +33,7 @@ export default function AddPhotoModalComponent({ setModal, viewData }) {
 
     const handlePhotoAdd = async (e) => {
         e.preventDefault();
-        const response = AddPhotoOnGroundPostApi(
+        const response = await AddPhotoOnGroundPostApi(
             {
                 photo: photo,
                 groundId: viewData._id,
@@ -41,8 +41,8 @@ export default function AddPhotoModalComponent({ setModal, viewData }) {
             token
         );
         if (response.status === 201) {
-            message.success("Photo added");
             setModal(false);
+            message.success("Photo added");
         }
     };
 

@@ -96,8 +96,8 @@ function BookingComponent() {
 
                 {records?.map((res) => {
                     return (
-                        <>
-                            <div key={res.turf?._id} className="bg-gray-100 rounded w-full lg:max-w-full lg:flex m-3 ">
+                        <span key={res._id}>
+                            <div className="bg-gray-100 rounded w-full lg:max-w-full lg:flex m-3 ">
                                 <div
                                     className="h-48 p-2 lg:h-auto lg:w-48 flex-none bg-cover text-center overflow-hidden"
                                     title="Mountain"
@@ -108,7 +108,7 @@ function BookingComponent() {
                                     <TableComponent data={res} />
                                 </div>
                             </div>
-                        </>
+                        </span>
                     );
                 })}
                 {data.length > 3 ? (

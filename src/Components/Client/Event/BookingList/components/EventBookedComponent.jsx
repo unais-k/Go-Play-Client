@@ -3,18 +3,21 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { EventBookingDetailsReqApi } from "../../../../../API/Services/ClientRequest";
 import ListCard from "./ListCard";
+import Loader from "../../../../Turf-admin/Layout/Loader";
 
 function EventBookedComponent() {
     const id = useSelector((state) => state.userLogin.id);
     const navigate = useNavigate();
     const token = useSelector((state) => state.userLogin.token);
+    const [loader, setLoader] = useState(false);
     const [bookings, setBookings] = useState([]);
 
     const data = async () => {
+        setLoader(true);
         const response = await EventBookingDetailsReqApi(token);
         if (response.status === 201) {
-            console.log(response.data.result);
             setBookings(response.data.result);
+            setLoader(false);
         }
     };
 
@@ -26,6 +29,7 @@ function EventBookedComponent() {
         <div>
             <div className="text-lime-600 font-semibold text-2xl mb-5">My Events</div>
             <div>
+                {loader && <Loader />}
                 <div className="">
                     <div className="overflow-x-auto">
                         <div className="min-w-screen  rounded ps-5 justify-center  font-sans overflow-hidden">

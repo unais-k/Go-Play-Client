@@ -21,7 +21,7 @@ function CheckOutComponent({ bookingData, setBookingData, movingDiv, handleOncha
     };
     return (
         <div ref={movingDiv} className="px-3 md:w-5/12">
-            <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
+            {/* <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
                 <div className="w-full flex mb-3 items-center">
                     {loader && <Loader />}
                     <div className="w-32">
@@ -39,7 +39,7 @@ function CheckOutComponent({ bookingData, setBookingData, movingDiv, handleOncha
                         <span>123 George Street, Sydney, NSW 2000 Australia</span>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
                 <div className="w-full p-3 border-b border-gray-200">
                     <div className="mb-5 font-bold text-sm uppercase">Over view</div>
@@ -98,7 +98,7 @@ function CheckOutComponent({ bookingData, setBookingData, movingDiv, handleOncha
                                 <div className="flex-grow pl-3">
                                     <span>
                                         {bookingData?.time?.map((res) => {
-                                            return <div>{res.slots}</div>;
+                                            return <div key={res._id}>{res.slots}</div>;
                                         })}
                                     </span>
                                 </div>

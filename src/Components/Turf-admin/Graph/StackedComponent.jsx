@@ -2,39 +2,52 @@ import React from "react";
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from "chart.js";
 import { Bar } from "react-chartjs-2";
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+export function BarGraph({ barGraph }) {
+    let monthlySales = [];
+    let monthlyProfit = [];
+    let dateData = [];
 
-export const options = {
-    responsive: true,
-    plugins: {
-        legend: {
-            position: "top",
-        },
-        title: {
-            display: true,
-            text: "Chart.js Bar Chart",
-        },
-    },
-};
+    for (let i = 0; i < barGraph?.length; i++) {
+        monthlySales.push(barGraph[i].totalPrice);
+        monthlyProfit.push((barGraph[i].totalPrice * 10) / 100);
+        dateData.push(barGraph[i]._id);
+    }
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
+    ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export const data = {
-    labels,
-    datasets: [
-        {
-            label: "Dataset 1",
-            data: [5, 8, 7, 6],
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: "top",
+            },
+            title: {
+                display: true,
+                text: "Chart.js Bar Chart",
+            },
         },
-        {
-            label: "Dataset 2",
-            data: [5, 8, 7, 6],
-            backgroundColor: "rgba(53, 162, 235, 0.5)",
-        },
-    ],
-};
+    };
 
-export function StackedGraph() {
+    const labels = dateData;
+    // const labels = ["January", "February", "March", "April", "May", "June", "July"];
+
+    const data = {
+        labels,
+        datasets: [
+            {
+                label: "Monthly Sale",
+                // data: [5, 8, 7, 6],
+                data: monthlySales,
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+            },
+            {
+                label: "Monthly Profit",
+                // data: [5, 8, 7, 6],
+                data: monthlyProfit,
+                backgroundColor: "rgba(53, 162, 235, 0.5)",
+            },
+        ],
+    };
+
     return <Bar options={options} data={data} />;
 }

@@ -8,16 +8,19 @@ import { message } from "antd";
 import { useNavigate } from "react-router-dom";
 import ClientCard from "../Layout/ClientCard";
 import Loader from "./../../Turf-admin/Layout/Loader";
+import { useSelector } from "react-redux";
 
 function TurfPage() {
     const navigate = useNavigate();
+    const dispatchLocation = useSelector((state) => state.userLogin.city);
+    console.log(dispatchLocation);
     const [state, setState] = useState([]);
     const [loader, setLoader] = useState(false);
     const [click, setClick] = useState(null);
 
     const groundList = async () => {
         setLoader(true);
-        const response = await GroundListReqApi();
+        const response = await GroundListReqApi(dispatchLocation);
         if (response.status === 200) {
             setState(response.data.result);
             setLoader(false);
@@ -25,10 +28,9 @@ function TurfPage() {
             message.error("Something went wrong");
         }
     };
-    console.log(state);
 
     const APIcall = async (id) => {
-        const response = await SearchGroundReqApi(id);
+        const response = await SearchGroundReqApi({ id: id, place: dispatchLocation });
         if (response.status === 201) {
             setState(response.data.result);
         }
@@ -39,8 +41,8 @@ function TurfPage() {
     };
 
     useEffect(() => {
-        groundList();
-    }, []);
+        if (dispatchLocation) groundList();
+    }, [dispatchLocation]);
 
     return (
         <div className="flex justify-center items-center">

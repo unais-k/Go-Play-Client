@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import ReviewAddComponent from "../../GroundView/Review/ReviewAddComponent";
 import { message } from "antd";
 
-function BookingViewCard() {
+function BookingViewCard({ setLoader }) {
     const navigate = useNavigate();
     const token = useSelector((state) => state.userLogin.token);
     const [bookingData, setBookingData] = useState({});
@@ -16,6 +16,7 @@ function BookingViewCard() {
     const id = params.id;
 
     const detail = async () => {
+        setLoader(true);
         const response = await BookingDetailViewReqApi(id, token);
 
         if (response.status === 201) {
@@ -23,6 +24,7 @@ function BookingViewCard() {
             setGroundData(response.data.result.turf);
             setEventData(response.data.result.event);
             setTime(response.data.result.time);
+            setLoader(false);
         }
     };
 

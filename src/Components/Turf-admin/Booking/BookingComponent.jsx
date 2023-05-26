@@ -4,6 +4,7 @@ import { BookingListReqApi, BookingStatusSetReqApi, PaymentStatusSetReqApi } fro
 import { useNavigate } from "react-router-dom";
 import Loader from "../Layout/Loader";
 import Pagination from "../../Admin/Booking/Components/Pagination";
+import { message } from "antd";
 
 function BookingComponent() {
     const token = useSelector((state) => state.turfAdminLogin.token);
@@ -27,7 +28,7 @@ function BookingComponent() {
         } else {
             const change = async () => {
                 const response = await PaymentStatusSetReqApi(id, token);
-                if (response.status === 201) setData(response.data.result);
+                if (response.status === 201) bookingListData();
             };
             change();
         }
@@ -67,7 +68,7 @@ function BookingComponent() {
         } else {
             const change = async () => {
                 const response = await BookingStatusSetReqApi(id, token);
-                if (response.status === 201) setData(response.data.result);
+                if (response.status === 201) bookingListData();
             };
             change();
         }
@@ -94,7 +95,7 @@ function BookingComponent() {
                 </div>
 
                 {data?.length > 0 ? (
-                    data?.map((res) => {
+                    records?.map((res) => {
                         return (
                             <div key={res._id} className="bg-gray-100 rounded w-fit lg:max-w-full lg:flex m-3">
                                 <div className=" p-4 flex justify-between leading-normal">
@@ -111,7 +112,7 @@ function BookingComponent() {
                                                     <th className="py-3 px-6 text-center">Date</th>
                                                     <th className="py-3 px-6 text-center">Sport</th>
                                                     <th className="py-3 px-6 text-center">total</th>
-                                                    <th className="py-3 px-6 text-center">Average</th>
+                                                    <th className="py-3 px-6 text-center">Advance</th>
                                                     <th className="py-3 px-6 text-center">Booking Model</th>
                                                     <th className="py-3 px-6 text-center">Payment status</th>
                                                     <th className="py-3 px-6 text-center">Booking status</th>

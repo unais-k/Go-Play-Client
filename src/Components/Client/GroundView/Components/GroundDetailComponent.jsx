@@ -60,7 +60,7 @@ function GroundDetailComponent({ reviewDiv, rating, state, handleBookNow }) {
                     <p className="mb-3 flex text-amber-500">
                         <div className="flex w-fit px-3 py-0.5 ms-2 bg-green-700 text-white me-3">
                             <AiFillStar className="pt-1" size={20} color="white" />
-                            1.1111
+                            {state?.rating}
                         </div>
                     </p>
                     <p>Dial :{state?.phone}</p>

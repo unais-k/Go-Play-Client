@@ -30,7 +30,8 @@ function ClientCard({ res }) {
                         {res?.place},{res?.nearCity}
                     </div>
                     <div className="flex w-fit px-3 py-0.5 ms-2 bg-green-700 text-white">
-                        <AiFillStar className="pt-1" size={20} color="white" />0
+                        <AiFillStar className="pt-1" size={20} color="white" />
+                        {res?.rating}
                     </div>
                 </div>
                 <div>

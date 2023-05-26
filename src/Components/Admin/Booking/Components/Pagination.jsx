@@ -2,7 +2,7 @@ import React from "react";
 
 function Pagination({ numbers, currentPage, changeCPage, nextPage, prePage }) {
     return (
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-6 mb-10">
             <nav aria-label="Page navigation example">
                 <ul className="inline-flex -space-x-px">
                     <li>
@@ -17,7 +17,7 @@ function Pagination({ numbers, currentPage, changeCPage, nextPage, prePage }) {
                         return (
                             <li key={i + (25 * 3.21) / 5}>
                                 <a
-                                    onClick={changeCPage}
+                                    onClick={() => changeCPage(res)}
                                     className={`px-3 py-2 ${
                                         currentPage === res
                                             ? "text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700"

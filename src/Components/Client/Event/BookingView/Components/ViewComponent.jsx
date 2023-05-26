@@ -2,24 +2,26 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { EventBookingDetailViewReqApi } from "../../../../../API/Services/ClientRequest";
-import { AiFillFolderOpen } from "react-icons/ai";
-import { FaUserAlt } from "react-icons/fa";
 import TableComponent from "./TableComponent";
 import AboutComponent from "./AboutComponent";
+import Loader from "../../../../Turf-admin/Layout/Loader";
 
 function ViewComponent() {
     const token = useSelector((state) => state.userLogin.token);
     const navigate = useNavigate();
     const [details, setDetails] = useState([]);
     const [events, setEvents] = useState([]);
+    const [loader, setLoader] = useState(false);
     const params = useParams();
     const id = params.id;
     const FullDetails = async () => {
+        setLoader(true);
         const response = await EventBookingDetailViewReqApi(id, token);
 
         if (response.status === 201) {
             setDetails(response.data.result);
             setEvents(response.data.events);
+            setLoader(false);
         }
     };
     useEffect(() => {
@@ -39,6 +41,7 @@ function ViewComponent() {
 
                         <div className="my-4"></div>
                     </div>
+                    {loader && <Loader />}
                 </div>
                 <div className="w-full ">
                     {events.length > 0 ? (

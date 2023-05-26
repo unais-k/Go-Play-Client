@@ -27,8 +27,8 @@ function PaymentComponent() {
             setBoookingData([location.state]);
             setTime([location.state.time]);
             setDate(location.state.date);
-            setTotal([location.state.total]);
-            setAdvance([location.state.advance]);
+            setTotal(location.state.total);
+            setAdvance(location.state.advance);
         } else {
             console.log(11);
         }
@@ -88,43 +88,43 @@ function PaymentComponent() {
                             >
                                 Paypal
                             </button> */}
-                            {advance.length > 0 && advance ? (
-                                <PayPalButtons
-                                    createOrder={(data, actions) => {
-                                        return actions.order
-                                            .create({
-                                                purchase_units: [
-                                                    {
-                                                        amount: {
-                                                            value: advance[0],
-                                                        },
+
+                            <PayPalButtons
+                                createOrder={(data, actions) => {
+                                    return actions.order
+                                        .create({
+                                            purchase_units: [
+                                                {
+                                                    amount: {
+                                                        value: advance,
                                                     },
-                                                ],
-                                            })
-                                            .then((orderId) => {
-                                                console.log(orderId, "orderId");
-                                                return orderId;
-                                            });
-                                    }}
-                                    onApprove={async function (data, actions) {
-                                        return actions.order.capture().then(async function () {
-                                            // Your code here after capture the order
-                                            if (data.orderID) {
-                                                console.log(data.orderID, "data.orderId");
-                                                await handlePayment(data.orderID);
-                                            } else {
-                                            }
+                                                },
+                                            ],
+                                        })
+                                        .then((orderId) => {
+                                            console.log(orderId, "orderId");
+                                            return orderId;
                                         });
-                                    }}
-                                />
-                            ) : (
+                                }}
+                                onApprove={async function (data, actions) {
+                                    return actions.order.capture().then(async function () {
+                                        // Your code here after capture the order
+                                        if (data.orderID) {
+                                            console.log(data.orderID, "data.orderId");
+                                            await handlePayment(data.orderID);
+                                        } else {
+                                        }
+                                    });
+                                }}
+                            />
+                            {/* ) : (
                                 <button
                                     type="button"
                                     className="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-primary bg-green-300 px-4 py-2.5 text-sm font-semibold text-dark shadow-sm hover:border-primary-accent hover:bg-primary-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-primary disabled:hover:bg-primary disabled:hover:text-white dark:focus:ring-white/80"
                                 >
                                     Paypal
                                 </button>
-                            )}
+                            )} */}
                             <button
                                 type="button"
                                 className="inline-flex cursor-pointer items-center justify-center rounded-xl border-2 border-critical bg-red-300 px-4 py-2.5 text-sm font-semibold text-dark shadow-sm hover:border-critical-accent hover:bg-critical-accent focus:outline-none focus:ring-2 focus:ring-orange-400/80 focus:ring-offset-0 disabled:opacity-30 disabled:hover:border-critical disabled:hover:bg-critical disabled:hover:text-white dark:focus:ring-white/80"

@@ -185,3 +185,15 @@ export const EventBookingDetailViewReqApi = async (data, token) => {
         return error?.response;
     }
 };
+
+export const AdminHomePageReqApi = async (token) => {
+    try {
+        const response = AxiosAdmin.get("/admin-home-page", {
+            headers: { Authorization: "Bearer " + token },
+        });
+        return response;
+    } catch (error) {
+        console.log(error.message);
+        return error?.response;
+    }
+};

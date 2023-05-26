@@ -5,15 +5,19 @@ import BreadCrumbComponent from "./BreadCrumbComponent";
 import { UserDataFetchReqApi, UserEditReqApi } from "../../../../API/Services/ClientRequest";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Loader from "../../../Turf-admin/Layout/Loader";
 
 function Layout() {
     const token = useSelector((state) => state.userLogin.token);
     const [clientData, setClientData] = useState([]);
+    const [loader, setLoader] = useState(false);
 
     const userData = async () => {
+        setLoader(true);
         const response = await UserDataFetchReqApi(token);
         if (response.status === 201) {
             setClientData(response.data.result);
+            setLoader(false);
         }
     };
     const edit = async (e) => {
@@ -35,6 +39,7 @@ function Layout() {
         <div>
             <BreadCrumbComponent title={"Profile"} />
             <div className="flex mt-5">
+                {loader && <Loader />}
                 <div className="sm:w-full md:w-3/12 lg:w-3/12">
                     <SidebarComponent />
                 </div>

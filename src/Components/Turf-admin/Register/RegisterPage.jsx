@@ -118,7 +118,9 @@ function TurfAdminRegisterPage() {
                                     />
                                 </div>
                                 <div className="w-40">
-                                    {imagePreview && <img src={imagePreview && imagePreview} alt="ProfileImage" />}
+                                    {imagePreview && (
+                                        <img className="w-40 h-40" src={imagePreview && imagePreview} alt="ProfileImage" />
+                                    )}
                                 </div>
                             </div>
                             <div>

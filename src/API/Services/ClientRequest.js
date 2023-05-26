@@ -9,9 +9,9 @@ export const LocationListReqApi = async () => {
     }
 };
 
-export const GroundListReqApi = async () => {
+export const GroundListReqApi = async (data) => {
     try {
-        const response = AxiosClient.get("/ground-list");
+        const response = AxiosClient.get(`/ground-list?place=${data}`);
         return response;
     } catch (error) {
         return error?.response;
@@ -179,8 +179,9 @@ export const SubmitReviewReqApi = async (data, id, token) => {
 };
 
 export const SearchGroundReqApi = async (data) => {
+    console.log(data);
     try {
-        const response = AxiosClient.get(`/search-turf?id=${data}`);
+        const response = AxiosClient.get(`/search-turf?id=${data.id}&place=${data.place}`);
         return response;
     } catch (error) {
         console.log(error.message);
