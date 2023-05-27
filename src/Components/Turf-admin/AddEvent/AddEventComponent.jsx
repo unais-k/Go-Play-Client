@@ -15,6 +15,7 @@ function AddEventComponent() {
 
     const [viewData, setViewData] = useState([]);
     const [time, setTime] = useState([]);
+    const [loader, setLoader] = useState(false);
     const [addEvent, setAddEvent] = useState(true);
     const [showTime, setShowTime] = useState(false);
     const [eventData, setEventData] = useState([]);
@@ -31,7 +32,9 @@ function AddEventComponent() {
     const groundId = params.id;
 
     const groundDetails = async () => {
+        setLoader(true);
         const response = await GroundViewReqApi(groundId, token);
+        setLoader(false);
         return response;
     };
 
