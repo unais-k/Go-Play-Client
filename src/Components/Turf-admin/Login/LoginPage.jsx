@@ -124,7 +124,7 @@ function TurfLoginPage() {
                                 </a>
                             </p>
                             <p className="text-end text-sm text-gray-500 font-light">
-                                New to Go Play?
+                                New to Go Play?&nbsp;
                                 <a className="text-green-400" onClick={handleRegister}>
                                     Register
                                 </a>

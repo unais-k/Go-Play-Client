@@ -249,7 +249,7 @@ function TurfAdminRegisterPage() {
                             </form>
 
                             <p className="text-end text-sm text-gray-500 font-light mt-5">
-                                Already
+                                Already&nbsp;
                                 <a className="text-green-400" onClick={handleLogin}>
                                     Login ?
                                 </a>

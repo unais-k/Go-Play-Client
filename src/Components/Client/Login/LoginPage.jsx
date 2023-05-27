@@ -5,6 +5,7 @@ import { setLogin } from "../../../Utils/Store/Slice/Client";
 import { FormValidate } from "../../../Utils/Helpers/FormValidate";
 import { userLogin } from "../../../API/Services/authReq";
 import { message } from "antd";
+import { setCityOff } from "../../../Utils/Store/Slice/Client";
 
 function LoginPage() {
     const [formData, setFormData] = useState({ email: "", password: "" });
@@ -28,9 +29,9 @@ function LoginPage() {
         const resp = await userLogin(res).then((response) => {
             if (response?.status === 401) message.warning("Login credential error");
             else if (response?.status === 200) {
-                console.log(response.data);
                 const token = response.data.token;
                 const name = response.data.name;
+                dispatch(setCityOff());
                 message.success(`${name} Welcome`);
                 dispatch(setLogin({ token: token, name: name, id: response.data.id }));
                 navigate("/");
