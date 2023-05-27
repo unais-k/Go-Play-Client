@@ -50,6 +50,8 @@ function EventMainComponent({ state }) {
     const [showDiv2, setShowDiv2] = useState(false);
     const [showDiv3, setShowDiv3] = useState(false);
     const [showDiv4, setShowDiv4] = useState(false);
+    const [step1, setStep1] = useState(true);
+    const [step2, setStep2] = useState(true);
 
     const movingDiv1 = useRef(null);
     const movingDiv2 = useRef(null);
@@ -306,15 +308,18 @@ function EventMainComponent({ state }) {
                                             sport?.map((res) => {
                                                 return (
                                                     <div
-                                                        className="bg-gray-200 px-4 py-2 m-2 mb-10"
+                                                        className={`${
+                                                            step1 === res ? "bg-amber-500" : "bg-gray-200"
+                                                        } px-4 py-2 m-2 mb-10`}
                                                         key={Math.floor(Math.random) * 0.2351 + 124}
-                                                        onClick={(e) =>
+                                                        onClick={(e) => {
+                                                            setStep1(res);
                                                             handleSelectedSport({
                                                                 value: res,
                                                                 groundId: state.groundDetail._id,
                                                                 e: e,
-                                                            })
-                                                        }
+                                                            });
+                                                        }}
                                                     >
                                                         {res}
                                                     </div>
@@ -333,8 +338,13 @@ function EventMainComponent({ state }) {
                                                 return (
                                                     <div
                                                         key={res._id}
-                                                        className="flex flex-col w-36 h-36 items-center bg-gray-200 m-3 p-5"
-                                                        onClick={() => handleSelectGround(res._id)}
+                                                        className={`flex flex-col w-36 h-36 items-center m-3 p-5 ${
+                                                            step2 === res._id ? "bg-amber-500" : "bg-gray-200"
+                                                        } `}
+                                                        onClick={() => {
+                                                            setStep2(res._id);
+                                                            handleSelectGround(res._id);
+                                                        }}
                                                     >
                                                         <div className="mb-3 uppercase font-semibold">{res.groundName}</div>
                                                         <div>{res.type}</div>
