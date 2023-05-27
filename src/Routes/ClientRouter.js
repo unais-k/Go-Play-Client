@@ -42,7 +42,7 @@ function ClientRouter() {
                 <Route path="/event-payment" element={isAuth ? <EventPayment /> : <Navigate to="/login" />} />
                 <Route path="/event-booking-view/:id" element={isAuth ? <EventBookingView /> : <Navigate to="/login" />} />
                 <Route path="/booking-view/:id" element={isAuth ? <BookingView /> : <Navigate to="/login" />} />
-                <Route path="/error" element={<Error />} />
+                <Route path="*" element={<Error />} />
             </Routes>
         </div>
     );

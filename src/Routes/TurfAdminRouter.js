@@ -40,7 +40,7 @@ function TurfAdminRouter() {
                 />
                 <Route path="/reviews" element={isAuth ? <Reviews /> : <Navigate to="/turf-admin/login" />} />
                 <Route path="/admin-chat" element={isAuth ? <Chat /> : <Navigate to="/turf-admin/login" />} />
-                <Route path="/error" element={<Error />} />
+                <Route path="*" element={<Error />} />
             </Routes>
         </div>
     );
