@@ -24,7 +24,7 @@ function ConstNavbar() {
                         }`}
                     >
                         <li>
-                            <a className="flex">
+                            <a className="flex" onClick={handleFootball}>
                                 <div>
                                     <div className="left-b pt-2 pb-3 ps-2 me-3 border-r border-zinc-300">
                                         <img
@@ -64,7 +64,7 @@ function ConstNavbar() {
                             </a>
                         </li>
                         <li>
-                            <a className="flex">
+                            <a className="flex" onClick={handleFootball}>
                                 <div>
                                     <div className="left-b pt-2 pb-3 ps-2 me-3 border-r border-zinc-300">
                                         <img
@@ -85,7 +85,7 @@ function ConstNavbar() {
                         </li>
 
                         <li>
-                            <a className="flex">
+                            <a className="flex" onClick={handleFootball}>
                                 <div>
                                     <div className="left-b pt-2 pb-3 ps-2 me-3 border-r border-zinc-300">
                                         <img

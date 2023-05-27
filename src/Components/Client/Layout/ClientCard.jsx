@@ -15,7 +15,7 @@ function ClientCard({ res }) {
     };
     return (
         <div>
-            <div className="flex w-full my-3" onClick={() => handleView(res._id)}>
+            <div className="flex w-full my-3" onClick={() => handleView({ id: res._id })}>
                 <div className="me-3 w-3/6">
                     <img className="h-44 mx-3 w-72 px-3" src={res?.images[0]} alt="" />
                 </div>

@@ -16,6 +16,7 @@
         "emoji-picker-react": "^4.4.9",
         "flowbite": "^1.6.5",
         "flowbite-react": "^0.4.3",
+        "formik": "^2.3.2",
         "lodash": "^4.17.21",
         "react": "^18.2.0",
         "react-bootstrap": "^2.7.2",
@@ -34,7 +35,8 @@
         "sweetalert2": "^11.7.3",
         "tailwind-scrollbar": "^3.0.4",
         "timeago.js": "^4.0.0-beta.3",
-        "web-vitals": "^2.1.4"
+        "web-vitals": "^2.1.4",
+        "yup": "^1.2.0"
     },
     "scripts": {
         "start": "react-scripts --openssl-legacy-provider start",

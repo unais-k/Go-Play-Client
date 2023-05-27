@@ -33,7 +33,7 @@ function AdminRouter() {
                 <Route path="/booking-list" element={isAuth ? <Booking /> : <Navigate to="/admin/" />} />
                 <Route path="/client-list" element={isAuth ? <ClientList /> : <Navigate to="/admin/" />} />
                 <Route path="/chat" element={isAuth ? <Chat /> : <Navigate to="/admin/" />} />
-                <Route path="*" element={<Error />} />
+                <Route path="/*" element={<Error />} />
             </Routes>
         </div>
     );

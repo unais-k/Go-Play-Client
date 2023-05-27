@@ -13,7 +13,6 @@ import { useSelector } from "react-redux";
 function TurfPage() {
     const navigate = useNavigate();
     const dispatchLocation = useSelector((state) => state.userLogin.city);
-    console.log(dispatchLocation);
     const [state, setState] = useState([]);
     const [loader, setLoader] = useState(false);
     const [click, setClick] = useState(null);

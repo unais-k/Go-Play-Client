@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function ErrorComponent() {
+    const navigate = useNavigate();
     return (
         <div>
             <div className="w-full h-screen flex flex-col lg:flex-row items-center justify-center space-y-16 lg:space-y-0 space-x-8 2xl:space-x-0">
@@ -23,7 +25,7 @@ function ErrorComponent() {
                                 clip-rule="evenodd"
                             ></path>
                         </svg>
-                        <a href="/">Return Home</a>
+                        <a onClick={() => navigate(-1)}>Return Home</a>
                     </a>
                 </div>
                 <div className="w-1/2 lg:h-full flex lg:items-end justify-center p-4">

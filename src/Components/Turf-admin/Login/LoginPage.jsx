@@ -1,35 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setLogin } from "../../../Utils/Store/Slice/TurfAdmin";
-import { FormValidate } from "../../../Utils/Helpers/FormValidate";
 import { turfAdminLogin } from "../../../API/Services/authReq";
 import { message } from "antd";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 function TurfLoginPage() {
-    const [formData, setFormData] = useState({ email: "", password: "" });
-    const [errors, setErrors] = useState({});
-    const [error, setError] = useState();
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleInputChange = (event) => {
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value,
-        });
-    };
-    const validateForm = () => {
-        const newErrors = FormValidate(formData);
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-    const submit = async (res) => {
-        const resp = await turfAdminLogin(res).then((response) => {
+    const submit = async () => {
+        const resp = await turfAdminLogin(values).then((response) => {
             if (response.status === 401) message.warning("Login credential error");
             else if (response.status === 201) {
-                console.log(response);
                 const token = response.data.token;
                 const name = response.data.name;
                 message.success(`${name} Welcome`);
@@ -39,11 +24,19 @@ function TurfLoginPage() {
         });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        if (!validateForm()) return;
-        submit(formData);
-    };
+    const loginSchema = yup.object().shape({
+        email: yup.string().email("invalid email").required("required"),
+        password: yup.string().required("required"),
+    });
+
+    const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
+        initialValues: {
+            email: "",
+            password: "",
+        },
+        validationSchema: loginSchema,
+        onSubmit: submit,
+    });
 
     const handleRegister = () => {
         navigate("/turf-admin/register");
@@ -70,12 +63,13 @@ function TurfLoginPage() {
                                     className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                                     id="username"
                                     name="email"
-                                    onChange={handleInputChange}
-                                    value={formData.email}
+                                    onChange={handleChange}
+                                    value={values.email}
+                                    onBlur={handleBlur}
                                     type="text"
                                     placeholder="Email"
                                 />
-                                {errors.email && <p className="text-red-500 mt-1 text-xs italic"> {errors.email}</p>}
+                                {errors.email && touched.email && <p className="text-red-600">{errors.email}</p>}
                                 <div className="absolute left-0 inset-y-0 flex items-center">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -92,13 +86,14 @@ function TurfLoginPage() {
                                 <input
                                     className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
                                     id="username"
-                                    onChange={handleInputChange}
-                                    value={formData.password}
+                                    onChange={handleChange}
+                                    value={values.password}
+                                    onBlur={handleBlur}
                                     name="password"
                                     type="password"
                                     placeholder="Password"
                                 />
-                                {errors.password && <p className="text-red-500 mt-1 text-xs italic"> {errors.password}</p>}
+                                {errors.password && touched.password && <p className="text-red-600">{errors.password}</p>}
                                 <div className="absolute left-0 inset-y-0 flex items-center">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +107,10 @@ function TurfLoginPage() {
                                 <div className="flex p-0 m-0 justify-center text-red-500 text-xs italic">{error}</div>
                             </div>
                             <div className="flex items-center justify-center mt-8">
-                                <button className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                                <button
+                                    type="submit"
+                                    className="text-white py-2 px-4 uppercase rounded bg-indigo-500 hover:bg-indigo-600 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                                >
                                     Login
                                 </button>
                             </div>
