@@ -55,7 +55,7 @@ function DashCardComponent({ totalProfit, totalCustomer, totalBooking }) {
                     </div>
                     <div>
                         <span className="block text-2xl font-bold">
-                            {(totalProfit?.length / totalBooking?.length) * 100}%
+                            {Math.ceil((totalProfit?.length / totalBooking?.length) * 100)}%
                         </span>
                         <span className="block text-gray-500">Completed Bookings</span>
                     </div>

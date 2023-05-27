@@ -110,7 +110,6 @@ function PaymentComponent() {
                                     return actions.order.capture().then(async function () {
                                         // Your code here after capture the order
                                         if (data.orderID) {
-                                            console.log(data.orderID, "data.orderId");
                                             await handlePayment(data.orderID);
                                         } else {
                                         }

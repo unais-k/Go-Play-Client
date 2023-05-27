@@ -20,10 +20,11 @@ function SidebarComponent() {
         <div className="me-4">
             <div className="font-bold text-3xl text-lime-600 mb-2">Welcome</div>
             <div className="grid m-auto w-full h-10">
-                {data.map((res) => {
+                {data.map((res, ind) => {
                     return (
                         <NavLink
                             to={res.path}
+                            key={ind}
                             className={({ isActive }) =>
                                 isActive
                                     ? "ps-3 py-2 text-dark hover:text-white bg-gray-300 hover:bg-gray-400 font-normal rounded font-serif"
