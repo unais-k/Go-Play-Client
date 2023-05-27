@@ -4,6 +4,7 @@ import { BarGraph } from "../Graph/VerticalGraphComponent";
 import { PieGraph } from "../Graph/PieGraphComponent";
 import { useSelector } from "react-redux";
 import { AdminHomePageReqApi } from "../../../API/Services/AdminRequest";
+import Loader from "./../Layout/Loader";
 
 function DashboardPageAdmin() {
     const token = useSelector((state) => state.adminLogin.token);
@@ -14,6 +15,7 @@ function DashboardPageAdmin() {
     const [totalProfit, setTotalProfit] = useState(null);
     const [totalBooking, setTotalBooking] = useState(null);
     const adminHome = async () => {
+        setLoader(true);
         const response = await AdminHomePageReqApi(token);
         const res = response.data;
         if (response.status === 201) {
@@ -22,6 +24,7 @@ function DashboardPageAdmin() {
             setTotalBooking(res.totalBooking);
             setTotalCustomer(res.totalCustomer);
             setTotalProfit(res.totalProfit);
+            setLoader(false);
         }
     };
 
@@ -32,6 +35,7 @@ function DashboardPageAdmin() {
         <div className="h-screen overflow-y-auto scrollbar-thin scrollbar-thumb-green-400 scrollbar-slate-700">
             <DashCardComponent totalBooking={totalBooking} totalCustomer={totalCustomer} totalProfit={totalProfit} />
             <div className="mt-12">
+                {loader && <Loader />}
                 <div className=" grid gap-10 grid-cols-1 lg:grid-cols-2">
                     <div className="bg-white shadow-lg">{<BarGraph barGraph={barGraph} />}</div>
                     <div className="flex justify-center w-full">
