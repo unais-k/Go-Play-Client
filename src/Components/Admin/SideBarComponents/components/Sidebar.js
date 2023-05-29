@@ -5,7 +5,7 @@ import { BsArrowLeftCircle, BsBorderWidth, BsChatDotsFill } from "react-icons/bs
 import { HiUsers } from "react-icons/hi";
 import { IoIosNotifications } from "react-icons/io";
 import { BiFootball } from "react-icons/bi";
-import { MdAnalytics, MdAdminPanelSettings, MdSettings } from "react-icons/md";
+import { MdAnalytics, MdAdminPanelSettings, MdSettings, MdPhotoLibrary } from "react-icons/md";
 import { GrLogout } from "react-icons/gr";
 import HamburgerButton from "../HamburgerMenuButton/HamburgerButton";
 import { setLogout } from "../../../../Utils/Store/Slice/Admin";
@@ -39,6 +39,7 @@ const Sidebar = () => {
         { title: "Bookings", path: "/admin/booking-list", src: <BsBorderWidth /> },
         { title: "customer", path: "/admin/client-list", src: <HiUsers /> },
         { title: "Add City", path: "/admin/add-city", src: <FaCity /> },
+        { title: "Banner", path: "/admin/banner", src: <MdPhotoLibrary /> },
     ];
     const handleLogout = () => {
         navigate("/admin");

@@ -14,6 +14,8 @@ import Error from "../Pages/Admin/Error";
 import Chat from "../Pages/Admin/Chat";
 import Booking from "../Pages/Admin/Booking";
 import OfferView from "../Pages/Admin/OfferView";
+import Banner from "../Pages/Admin/Banner";
+import AddBanner from "../Pages/Admin/AddBanner";
 function AdminRouter() {
     // const isAuth = true;
     const isAuth = useSelector((state) => state.adminLogin.token);
@@ -32,6 +34,8 @@ function AdminRouter() {
                 <Route path="/owner-list" element={isAuth ? <OwnerList /> : <Navigate to="/admin/" />} />
                 <Route path="/booking-list" element={isAuth ? <Booking /> : <Navigate to="/admin/" />} />
                 <Route path="/client-list" element={isAuth ? <ClientList /> : <Navigate to="/admin/" />} />
+                <Route path="/banner" element={isAuth ? <Banner /> : <Navigate to="/admin/" />} />
+                <Route path="/add-banner" element={isAuth ? <AddBanner /> : <Navigate to="/admin/" />} />
                 <Route path="/chat" element={isAuth ? <Chat /> : <Navigate to="/admin/" />} />
                 <Route path="/*" element={<Error />} />
             </Routes>

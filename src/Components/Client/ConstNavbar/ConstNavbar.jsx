@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 function ConstNavbar() {
     const navigate = useNavigate();
     const handleFootball = () => {
-        navigate("/football-turfs");
+        navigate("/turf-list");
     };
     let [open, setOpen] = useState(false);
     return (
         <div className="border-t">
             <div className="w-full py-4 top-0 left-0">
-                <div className="md:flex items-center justify-center bg-white py-5 md:px-10 px-7">
+                <div className=" cursor-pointer md:flex items-center justify-center bg-white py-5 md:px-10 px-7">
                     <div
                         onClick={() => setOpen(!open)}
                         className="text-3xl absolute right-8 top-13 cursor-pointer md:hidden"
@@ -36,7 +36,7 @@ function ConstNavbar() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="font-semibold">All Sports</div>
+                                    <div className="font-semibold hover:text-amber-500">All Sports</div>
                                     <span className="">
                                         <p className="w-11/12 text-sm text-stone-500 ">See all ground of your city</p>
                                     </span>
@@ -56,7 +56,7 @@ function ConstNavbar() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="font-semibold">Football</div>
+                                    <div className="font-semibold hover:text-amber-500">Football</div>
                                     <span className="">
                                         <p className="w-11/12 text-sm text-stone-500 ">See football ground of your city</p>
                                     </span>
@@ -76,7 +76,7 @@ function ConstNavbar() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="font-semibold">Cricket</div>
+                                    <div className="font-semibold hover:text-amber-500">Cricket</div>
                                     <span className="">
                                         <p className="w-11/12 text-sm text-stone-500 ">See cricket ground of your city</p>
                                     </span>
@@ -97,7 +97,7 @@ function ConstNavbar() {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="font-semibold">Events</div>
+                                    <div className="font-semibold hover:text-amber-500">Events</div>
                                     <span className="">
                                         <p className="w-11/12 text-sm text-stone-500 ">Offers & discount</p>
                                     </span>

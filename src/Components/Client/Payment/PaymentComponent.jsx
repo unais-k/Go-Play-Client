@@ -33,6 +33,13 @@ function PaymentComponent() {
             console.log(11);
         }
     }, [""]);
+
+    let advanceAmount = 0;
+    if (advance.length > 0) {
+        advanceAmount = advance.toString();
+        console.log(typeof advanceAmount);
+    }
+
     const bookinDate = new Date(date ? date : "").toDateString();
     const handlePayment = async (id) => {
         const response = await BookingSubmitReqApi(
@@ -110,6 +117,7 @@ function PaymentComponent() {
                                     return actions.order.capture().then(async function () {
                                         // Your code here after capture the order
                                         if (data.orderID) {
+                                            console.log(data.orderID, "data.orderId");
                                             await handlePayment(data.orderID);
                                         } else {
                                         }

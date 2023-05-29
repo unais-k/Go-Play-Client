@@ -19,7 +19,6 @@ function TurfHomePage() {
     const adminPage = async () => {
         setLoader(true);
         const response = await AdminHomePageReqApi(token);
-        // console.log(response.data);
         const res = response.data;
         if (response.status === 201) {
             setPieChart(res.pieChart);

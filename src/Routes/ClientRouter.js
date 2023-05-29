@@ -31,7 +31,7 @@ function ClientRouter() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/otp" element={<Otp />} />
                 <Route path="/forget_password" element={<ForgetPassword />} />
-                <Route path="/football-turfs" element={<Football />} />
+                <Route path="/turf-list" element={<Football />} />
                 <Route path="/ground-view/:id" element={<GroundPage />} />
                 <Route path="/event" element={<EventPage />} />
                 <Route path="/payment" element={isAuth ? <Payment /> : <Navigate to="/login" />} />

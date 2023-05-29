@@ -4,15 +4,16 @@ import { Bar } from "react-chartjs-2";
 
 export function BarGraph({ barGraph }) {
     let monthlySales = [];
+    let TotalSale = [];
     let monthlyProfit = [];
     let dateData = [];
     console.log(barGraph);
     for (let i = 0; i < barGraph?.length; i++) {
-        monthlySales.push(barGraph[i].totalPrice);
+        TotalSale.push(barGraph[i].totalPrice);
+        monthlySales.push(barGraph[i].totalPrice / 10);
         monthlyProfit.push(barGraph[i].advance);
         dateData.push(barGraph[i]._id);
     }
-    console.log(monthlySales);
 
     ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -49,10 +50,16 @@ export function BarGraph({ barGraph }) {
         labels,
         datasets: [
             {
+                label: "Total Sale",
+                // data: [10, 3, 6, 8, 5, 7, 3, 2, 4, 6, 3, 7],
+                data: TotalSale,
+                backgroundColor: "rgba(255, 99, 132, 0.5)",
+            },
+            {
                 label: "Turf-Admin's Profit",
                 // data: [10, 3, 6, 8, 5, 7, 3, 2, 4, 6, 3, 7],
                 data: monthlySales,
-                backgroundColor: "rgba(255, 99, 132, 0.5)",
+                backgroundColor: "rgba(255, 99, 20, 0.5)",
             },
             {
                 label: "Admin's Profit",

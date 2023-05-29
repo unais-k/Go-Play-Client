@@ -3,20 +3,24 @@ import { addCityReqApi, findCityReqApi } from "../../../API/Services/AdminReques
 import { useSelector } from "react-redux";
 import { message } from "antd";
 import { toast } from "react-toastify";
+import Loader from "./../Layout/Loader";
 
 function CityPage() {
     const token = useSelector((state) => state.adminLogin.token);
     const [state, setState] = useState(null);
     const [list, setList] = useState([]);
+    const [loader, setLoader] = useState(false);
 
     useEffect(() => {
         if (token) findCity();
     }, [token]);
 
     const findCity = async () => {
+        setLoader(true);
         await findCityReqApi(token).then(async (response) => {
             if (response.status === 200) {
                 setList(response.data.result);
+                setLoader(false);
             } else {
                 message.error("Something went wrong find");
             }
@@ -63,6 +67,7 @@ function CityPage() {
                         </div>
                     </div>
                 </form>
+                {loader && <Loader />}
             </div>
             <div className="mt-10">
                 <div className="">

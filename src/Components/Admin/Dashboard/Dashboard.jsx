@@ -4,7 +4,7 @@ import { BarGraph } from "../Graph/VerticalGraphComponent";
 import { PieGraph } from "../Graph/PieGraphComponent";
 import { useSelector } from "react-redux";
 import { AdminHomePageReqApi } from "../../../API/Services/AdminRequest";
-import Loader from "./../Layout/Loader";
+import Loader from "../Layout/Loader";
 
 function DashboardPageAdmin() {
     const token = useSelector((state) => state.adminLogin.token);

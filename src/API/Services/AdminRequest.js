@@ -197,3 +197,28 @@ export const AdminHomePageReqApi = async (token) => {
         return error?.response;
     }
 };
+
+export const AddBannerReqApi = async (data, token) => {
+    console.log(data);
+    try {
+        const response = AxiosAdmin.post("/add-banner", data, {
+            headers: { Authorization: "Bearer " + token },
+        });
+        return response;
+    } catch (error) {
+        console.log(error.message);
+        return error?.response;
+    }
+};
+
+export const BannerFetchReqApi = async (token) => {
+    try {
+        const response = AxiosAdmin.get("/fetch-banner", {
+            headers: { Authorization: "Bearer " + token },
+        });
+        return response;
+    } catch (error) {
+        console.log(error.message);
+        return error?.response;
+    }
+};

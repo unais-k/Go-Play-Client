@@ -16,6 +16,7 @@ import Reviews from "../Pages/Turf-Admin/Reviews";
 import Chat from "../Pages/Turf-Admin/Chat";
 import AddBooking from "../Pages/Turf-Admin/AddBooking";
 import AddBookingView from "../Pages/Turf-Admin/AddBookingView";
+import ForgetPassword from "../Pages/Turf-Admin/ForgetPassword";
 
 function TurfAdminRouter() {
     const isAuth = useSelector((state) => state.turfAdminLogin.token);
@@ -25,6 +26,8 @@ function TurfAdminRouter() {
             <Routes>
                 <Route path="/login" element={isAuth ? <TurfAdminHome /> : <TurfAdminLogin />} />
                 <Route path="/register" element={<TurfRegisterPage />} />
+                <Route path="/forget-password" element={<ForgetPassword />} />
+
                 <Route path="/home" element={isAuth ? <TurfAdminHome /> : <Navigate to="/turf-admin/login" />} />
                 <Route path="/ground-list" element={isAuth ? <GroundList /> : <Navigate to="/turf-admin/login" />} />
                 <Route path="/ground-add" element={isAuth ? <GroundAdd /> : <Navigate to="/turf-admin/login" />} />

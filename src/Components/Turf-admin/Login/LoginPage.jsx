@@ -43,7 +43,7 @@ function TurfLoginPage() {
     };
 
     const handleForgetPassword = () => {
-        navigate("/turf-admin/forget_password");
+        navigate("/turf-admin/forget-password");
     };
 
     return (

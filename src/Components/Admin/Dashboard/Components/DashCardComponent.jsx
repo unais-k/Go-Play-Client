@@ -19,7 +19,6 @@ function DashCardComponent({ totalProfit, totalCustomer, totalBooking }) {
                                 </div>
                                 <div className="relative w-auto pl-4 flex-initial">
                                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full  bg-red-500">
-                                        {/* icon */}
                                         <GoGraph />
                                     </div>
                                 </div>

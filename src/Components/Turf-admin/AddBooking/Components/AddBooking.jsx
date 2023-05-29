@@ -13,6 +13,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import TimeComponent from "./TimeComponent";
 import { toast } from "react-toastify";
+import Loader from "../../Layout/Loader";
 
 function AddBookingViewComponent() {
     const token = useSelector((state) => state.turfAdminLogin.token);
@@ -21,6 +22,7 @@ function AddBookingViewComponent() {
 
     const [step1, setStep1] = useState(true);
     const [step2, setStep2] = useState(true);
+    const [loader, setLoader] = useState(false);
     const [step3, setStep3] = useState(true);
     const [step4, setStep4] = useState(true);
 
@@ -54,9 +56,11 @@ function AddBookingViewComponent() {
     });
 
     const GroundData = async () => {
+        setLoader(true);
         const response = await GroundViewReqApi(id, token);
         if (response.status === 201) {
             setState(response.data.result);
+            setLoader(false);
         } else {
             toast.error("Something went wrong");
         }
@@ -71,8 +75,10 @@ function AddBookingViewComponent() {
 
     // grounds sports types
     const GroundEventAvailable = async () => {
+        setLoader(true);
         const response = await SelectTypeOfReqApi(id, token);
         setSport(response.data.result);
+        setLoader(false);
     };
     useEffect(() => {
         if (token) {
@@ -210,6 +216,7 @@ function AddBookingViewComponent() {
             <div className="min-w-screen min-h-screen">
                 <div className="w-11/12 m-auto bg- pt-20 border-t p-5 text-gray-800">
                     <div className="w-full">
+                        {loader && <Loader />}
                         <div className="-mx-3 md:flex items-start">
                             <div className="px-3 md:w-7/12 lg:pr-10">
                                 <div className="grid grid-cols-2 space-x-8">

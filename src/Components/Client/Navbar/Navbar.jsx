@@ -48,7 +48,7 @@ function NavbarPage(props) {
     return (
         <header>
             <div className="logo-container">
-                <div className="logo-left flex justify-between">
+                <div className="cursor-pointer logo-left flex justify-between">
                     <a>
                         <img src="/logo-no-background.png" className="img-logo" alt="logo-left" />
                     </a>
@@ -56,7 +56,7 @@ function NavbarPage(props) {
                         Go Play
                     </span>
                 </div>
-                <div className="header-right pull-right ">
+                <div className="header-right pull-right cursor-pointer">
                     {/* <a className="text-lime-600" onClick={handleBusiness}>
                         For Business
                     </a> */}
@@ -109,7 +109,10 @@ function NavbarPage(props) {
                             Sign In
                         </a>
                     )}
-                    <a className="log-btn text-white bg-amber-500"> Book online</a>
+                    <a onClick={() => navigate("/turf-list")} className="log-btn text-white bg-amber-500">
+                        {" "}
+                        Book online
+                    </a>
                 </div>
             </div>
             <div className=""></div>

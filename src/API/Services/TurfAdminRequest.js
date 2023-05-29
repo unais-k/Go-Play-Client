@@ -404,3 +404,33 @@ export const AdminHomePageReqApi = async (token) => {
 };
 
 // this is pending ............
+
+export const FPEmailReqApi = async (data) => {
+    try {
+        const response = AxiosTurfAdmin.patch(`/email-check`, data);
+        return response;
+    } catch (error) {
+        console.log(error.message);
+        return error?.response;
+    }
+};
+
+export const FPOtpReqApi = async (data) => {
+    try {
+        const response = AxiosTurfAdmin.patch(`/otp-check`, data);
+        return response;
+    } catch (error) {
+        console.log(error.message);
+        return error?.response;
+    }
+};
+
+export const FPSetResApi = async (data) => {
+    try {
+        const response = AxiosTurfAdmin.patch(`/forget-password-submit`, data);
+        return response;
+    } catch (error) {
+        console.log(error.message);
+        return error?.response;
+    }
+};
