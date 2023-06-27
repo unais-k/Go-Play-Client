@@ -25,7 +25,7 @@ function AdminLoginPage() {
 
         const response = await adminLog({ email: email, password: password });
         console.log(response);
-        if (response.status == 200) {
+        if (response.status === 200) {
             dispatch(
                 setLogin({
                     user: "Admin",
@@ -34,6 +34,8 @@ function AdminLoginPage() {
                 })
             );
             navigate("/admin/dash");
+        } else {
+            message.warning(response?.msg);
         }
     };
 

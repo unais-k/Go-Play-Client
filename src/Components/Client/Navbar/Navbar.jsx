@@ -20,7 +20,6 @@ function NavbarPage(props) {
     const handleBusiness = () => {
         navigate("/business-intro");
     };
-    const Location = useSelector((state) => state.userLogin.city);
 
     const [showModal, setShowModal] = React.useState(props.true);
     const [list, setList] = useState([]);
@@ -74,7 +73,7 @@ function NavbarPage(props) {
                         <>
                             <div className="justify-center items-left ms-24 flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
                                 <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                                    <div className="border-0 bg-gray-400  relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                                    <div className="border-0   relative flex flex-col w-full bg-white outline-none focus:outline-none">
                                         <div className="flex items-start justify-center border-2 border-solid border-slate-200 bg-gray-200">
                                             <h3 className="text-l font-semibold my-2">select your city</h3>
                                         </div>

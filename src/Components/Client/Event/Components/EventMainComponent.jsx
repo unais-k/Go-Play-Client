@@ -51,6 +51,9 @@ function EventMainComponent({ state }) {
     const [showDiv3, setShowDiv3] = useState(false);
     const [showDiv4, setShowDiv4] = useState(false);
 
+    const [step1, setStep1] = useState(true);
+    const [step2, setStep2] = useState(true);
+
     const movingDiv1 = useRef(null);
     const movingDiv2 = useRef(null);
     const movingDiv3 = useRef(null);
@@ -87,6 +90,8 @@ function EventMainComponent({ state }) {
                 bookNow1();
             }
         } else {
+            setStep1(null);
+            setStep2(null);
             message.warning("Select a type of Package");
         }
     };
@@ -187,7 +192,7 @@ function EventMainComponent({ state }) {
                 })
             );
             setSelectSlot(selectSlot.filter((val) => val.time != id.time));
-            setPrice(-price - -id.price);
+            setPrice(price - id.price);
         }
         bookNow4();
     };
@@ -306,15 +311,18 @@ function EventMainComponent({ state }) {
                                             sport?.map((res) => {
                                                 return (
                                                     <div
-                                                        className="bg-gray-200 px-4 py-2 m-2 mb-10"
+                                                        className={`${
+                                                            step1 === res ? "bg-amber-500" : "bg-gray-200"
+                                                        } px-4 py-2 m-2 mb-10`}
                                                         key={Math.floor(Math.random) * 0.2351 + 124}
-                                                        onClick={(e) =>
+                                                        onClick={(e) => {
+                                                            setStep1(res);
                                                             handleSelectedSport({
                                                                 value: res,
                                                                 groundId: state.groundDetail._id,
                                                                 e: e,
-                                                            })
-                                                        }
+                                                            });
+                                                        }}
                                                     >
                                                         {res}
                                                     </div>
@@ -398,8 +406,8 @@ function EventMainComponent({ state }) {
                                 <p></p>
                                 <p className="p-3">Date: {new Date(date).toDateString()}</p>
                                 <p className="p-3">Total Slot booked: {selectSlot ? selectSlot.length : ""}</p>
-                                <p className="p-3">Total price: {price ? price : ""}</p>
-                                <p className="p-3">Total price: {price ? price : ""}</p>
+                                {/* <p className="p-3">Total price: {price ? price : ""}</p>
+                                <p className="p-3">Total price: {price ? price : ""}</p> */}
                                 <p className=" bg-orange-400 m-1 p-2 rounded" onClick={handleBookingSubmit}>
                                     Book Now
                                 </p>

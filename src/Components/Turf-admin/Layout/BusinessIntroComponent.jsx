@@ -48,12 +48,18 @@ function BusinessIntroComponent() {
                     for you.
                 </h3>
 
-                <div className="inline-flex w-full mt-6 mb-10 sm:w-auto">
+                <div className="inline-flex w-full gap-10 mt-6 mb-10 sm:w-auto">
                     <a
                         onClick={handleRegister}
                         className="inline-flex uppercase items-center text-sm font-semibold justify-center w-full px-6 py-2 text-white duration-300 bg-amber-500 hover:text-black hover:bg-amber-600 "
                     >
                         Register for company
+                    </a>
+                    <a
+                        onClick={() => navigate("/turf-admin/login")}
+                        className="inline-flex uppercase items-center text-sm font-semibold justify-center w-full px-6 py-2 text-white duration-300 bg-amber-500 hover:text-black hover:bg-amber-600 "
+                    >
+                        Already Login
                     </a>
                 </div>
             </div>

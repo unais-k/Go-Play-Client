@@ -20,7 +20,7 @@ function ChatMainComponent() {
     const [loader, setLoader] = useState(false);
 
     const scrollRef = useRef();
-    const PORT = "http://localhost:4001";
+    const PORT = "https://go-play-server.onrender.com";
     socket = io(PORT);
 
     const getMessages = async () => {

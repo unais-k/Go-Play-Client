@@ -59,7 +59,7 @@ const Sidebar = () => {
                     } absolute text-3xl bg-white fill-slate-800  rounded-full cursor-pointer top-9 -right-4 dark:fill-gray-400 dark:bg-gray-800`}
                     onClick={() => setOpen(!open)}
                 />
-                <Link to="/">
+                <Link to="/admin/dash">
                     <div className={`flex ${open && "gap-x-4"} items-center`}>
                         <img src="/logo-no-background.png" alt="" className="w-14 h-9" />
                         {open && <span className="text-xl font-admin whitespace-nowrap dark:text-white">Go-Play</span>}

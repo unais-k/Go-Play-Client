@@ -34,10 +34,10 @@ function CityPage() {
         if (state === null) {
             toast.error("Please fill the field");
         } else {
-            const response = addCityReqApi({ data: state }, token);
+            const response = await addCityReqApi({ data: state }, token);
             if (response.status === 201) {
-                setList(response.data.result);
                 message.success("City created");
+                setList(response.data.result);
             } else {
                 message.error("Something went wrong");
             }

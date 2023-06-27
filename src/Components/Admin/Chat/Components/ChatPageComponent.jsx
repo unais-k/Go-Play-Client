@@ -45,7 +45,7 @@ function ChatPageComponent() {
         setConversationId(response.data.result);
     };
 
-    const PORT = "http://localhost:4001";
+    const PORT = "https://go-play-server.onrender.com";
 
     const getMessages = async () => {
         const response = await GetFullMessagesReqApi(currentChat, token);
